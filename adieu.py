@@ -1,25 +1,32 @@
 def main():
-
-    # Collecting and keeping track of user input names
-    name_list = []
     try:
+        name_list = []
         while True:
-            name = input("Name: ")
-            name_list.append(name)
+            user_input = input("Name: ")
+            name_list.append(user_input)
     except EOFError:
-        pass
+        pass 
 
-    # Genarating the gramatically correct sentence
-    try:
+    lyric_string = "Adieu, adieu, to"
+
+    for name in name_list:
+
         if len(name_list) == 1:
-            print(f"\nAdieu, adieu, to {name_list[0]}")
-        elif len(name_list) == 2:
-            print(f"\nAdieu, adieu, to {name_list[0]} and {name_list[1]}")
-        elif len(name_list) == 3:
-            print(f"\nAdieu, adieu, to {name_list[0]}, {name_list[1]} and {name_list[2]}")
-    except:
-        print("No input passed!")
-main()
+            print(f"{lyric_string} {name}")
+            break
 
-def grammar(list_var):
-    ...
+        elif len(name_list) == 2:
+            print(f"{lyric_string} {name_list[0]} and {name_list[1]}")
+            break
+        
+        elif len(name_list) > 2:
+            string = ""
+            for name in name_list[:-1]:
+                string = string + name + ", "
+            print(f"{lyric_string} {string}and {name_list[-1]}")
+            break
+        else:
+            print("No input entered!")
+            break
+
+main()
